@@ -140,18 +140,37 @@ class Board:
         print(f'Found {len(on_board)} words on board.')
         return on_board
     
-    def list_words(self):
+    def list_words(self, with_scores = False):
         self.words.sort()
         self.words.sort(key = len) 
         short = len(self.words[0])
         long = len(self.words[-1])
+        total_score = 0
         for my_len in range(short, long+1):
             my_words = []
+            set_score = 0
             for w in self.words: 
-                if len(w) == my_len: my_words.append(w)
+                if len(w) == my_len: 
+                    my_words.append(w)
+                    set_score += get_score(w)
             print(f'{my_len}-letter words: {len(my_words)}')
-            for word in my_words: print(word)
+            if with_scores: print(f'Total Score: {set_score}pts\n***\n')
+            for word in my_words: 
+                if with_scores: print(f'{word} ({get_score(word)})')
+                else: print(word)
+                
+            total_score += set_score
             print('***\n')
+        if with_scores: print(f'Total score: {total_score}pts')
+
+def get_score(word = 'happy'):
+    if len(word) < 3: return 0
+    elif len(word) < 5: return 1
+    elif len(word) == 5: return 2
+    elif len(word) == 6: return 3
+    elif len(word) == 7: return 5
+    elif len(word) > 7: return 11
+    else: return False
     
 def word_to_pieces(word = 'query', pieces = PIECES):
     """Given a word returns the Boggle pieces that compose the word in order."""
@@ -197,6 +216,7 @@ c = Board(side=5)
 choices(c.words, k = 20)
 print(f'c is a board with {c.side} x {c.side} and {len(c.words)} words.')
 c.list_words()
+c.list_words(True)
 print('above output is from c.list_words()')
 
 
