@@ -23,17 +23,19 @@ For each consecutive piece in the word, find all locations of that piece and for
 
 *To continue the example* the next letter is N and it exists in three locations [2, 4], [3, 0], and [0, 0]. We will check each of these locations of N against each of the previous locations [2, 3] and [4, 1].
 
-[last position], [next position] <== format
+```
+[last position], [next position] # *format*
 
-[2,4], [2,3] #the next position is one square to the left, so it *is adjacent* and it has not been previously used... so it is a possible next square in a valid word path
+[2, 4], [2, 3] #the next position is one square to the left, so it *is adjacent* and it has not been previously used... so it is a possible next square in a valid word path
 
-[2,4], [4,1] #the position is 2 steps down and 3 to the left so it *is NOT adjacent* and cannot be part of a valid word path
+[2, 4], [4, 1] #the position is 2 steps down and 3 to the left so it *is NOT adjacent* and cannot be part of a valid word path
 
-[3,0], [2, 3] # not adjacent
-[3,0], [4, 1] # diagonal (is adjacent) and not previously used... valid word path
+[3, 0], [2, 3] # not adjacent
+[3, 0], [4, 1] # diagonal (is adjacent) and not previously used... valid word path
 
 [0, 0], [2, 3] # not adjacent
 [0, 0], [4, 1] # not adjacent
+```
 
 So, now the two possible word paths to spell AN are
 [[[2, 4], [2, 3]], [[3, 0], [4, 1]]]
