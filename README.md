@@ -36,7 +36,7 @@ For each consecutive piece in the word, find all locations of that piece and for
 ```
 
 So, now the two possible word paths to spell AN are
-[[[2, 4], [2, 3]], [[3, 0], [4, 1]]]
+[[[2, 3], [2, 4]], [[4, 1], [3, 0]]]
 
 We continue this process for each additional letter in the word as long as there are *at least* one valid word path for each additional letter. We return either **false** if no valid word path exists or **an array of word paths** in the format [[word path], [word path], [word path], ....] where a word path is a list of position lists.
 
