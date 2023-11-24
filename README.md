@@ -14,7 +14,10 @@ boggle.Board objects have a number of functions that are called by the **__init_
 
 ## How do we find if a given word exists on the board?
 
-**get_all_word_paths** Start with an empty list. For the first piece required in the word, find all locations of that piece on the board (I use [row, col] to denote a position, [0, 0] is top left, on a 5x5 board, [0, 4] is top right, [4, 0] bottom left, and [4, 4] bottom right)... each of these may be the first position of a completed word path. *For example* if there are two A's on the board at [2, 3] and [4, 1] we start our tree of possible word paths with [[[2, 3]], [[4, 1]]].
+**Board.get_all_word_paths()** is used to determine if a word can be spelled on the board *and if so* what are all of the possible ways to spell it?
+
+#### Board.get_all_word_paths() description
+Start with an empty list. For the first piece required in the word, find all locations of that piece on the board (I use [row, col] to denote a position, [0, 0] is top left, on a 5x5 board, [0, 4] is top right, [4, 0] bottom left, and [4, 4] bottom right)... each of these may be the first position of a completed word path. *For example* if there are two A's on the board at [2, 3] and [4, 1] we start our tree of possible word paths with [[[2, 3]], [[4, 1]]].
 
 For each consecutive piece in the word, find all locations of that piece and for each location test against all existing word paths: does the location exist adjacent to the last letter of the word path **and** has the location not already been used? If **YES** to both then append the location to the word path and continue searching. 
 
