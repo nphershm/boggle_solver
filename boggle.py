@@ -1,7 +1,11 @@
 ## Boggle representation v2
 ## Nick -- Thanksgiving 2023
 
-## implement a boggle piece.
+## implement a boggle board composed of pieces
+## provide a Board.get_all_words() or just Board.words attribute
+## is working see bottom for implementation
+
+## Level 10 would be to use cv2 to parse an image of a boggle board 
 
 from random import *
 
@@ -136,6 +140,19 @@ class Board:
         print(f'Found {len(on_board)} words on board.')
         return on_board
     
+    def list_words(self):
+        self.words.sort()
+        self.words.sort(key = len) 
+        short = len(self.words[0])
+        long = len(self.words[-1])
+        for my_len in range(short, long+1):
+            my_words = []
+            for w in self.words: 
+                if len(w) == my_len: my_words.append(w)
+            print(f'{my_len}-letter words: {len(my_words)}')
+            for word in my_words: print(word)
+            print('***\n')
+    
 def word_to_pieces(word = 'query', pieces = PIECES):
     """Given a word returns the Boggle pieces that compose the word in order."""
     i = 0
@@ -179,6 +196,8 @@ print(f'b is a board with {b.side} x {b.side} and {len(b.words)} words.')
 c = Board(side=5)
 choices(c.words, k = 20)
 print(f'c is a board with {c.side} x {c.side} and {len(c.words)} words.')
+c.list_words()
+print('above output is from c.list_words()')
 
 
 d = Board(side = 4)
