@@ -19,3 +19,14 @@ Convert a word into boggle pieces (note that qu is a single piece)
     If any word piece fails to be found return False (word cannot be found)
 
 **get_all_word_paths** Start with an empty list. For the first piece required in the word, find all locations of that piece on the board... each of these may be the first position of a completed word path. For each consecutive piece in the word, find all locations of that piece and for each location test against all existing word paths: does the location exist adjacent to the last letter of the word path? **and** has the location not already been used? if **YES** to both then append the location to the word path and continue searching. Return false if any piece required in the word fails to meet criteria and be able to continue the word path... Return a list of lists of piece locations, which use [row, col] 0-indexed format, of words... something like [[[3, 1], [2, 0], [2, 1], [2, 2]]].
+
+## Usage
+
+**Q: How do I find all words on a boggle board that I just played**
+*A:* Follow the following commands into a python interpreter running in the project directory (has **boggle.py** in the path)
+
+```
+from boggle import *
+a = makeBoard('A,B,C,...comma sep board here, left-to-right') # define the board
+a.list_words(True) #
+```
