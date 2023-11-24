@@ -29,7 +29,7 @@ class Board:
     #letters = [] ## an array of letters is a board
     #side = 5
     WORD_LIST = []
-    with open('word_list.txt','r') as f:
+    with open('dictionary.txt','r') as f:
         for w in f.readlines():
             WORD_LIST.append(w.rstrip('\n').upper())
 
